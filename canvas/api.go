@@ -111,7 +111,6 @@ func (api *API) GetAnnouncementsForCourse(courseID int) ([]Discussion, error) {
 		fmt.Sprintf("course_%d", courseID))
 	params.Set("start_date",
 		time.Date(1970, 1, 1, 0, 0, 0, 0, time.UTC).Format(ISO8601DateFormat))
-	// time.Now().AddDate(-1, 0, 0).Format(ISO8601DateFormat))
 	params.Set("end_date",
 		time.Now().Format(ISO8601DateFormat))
 	params.Set("per_page", strconv.Itoa(500))
