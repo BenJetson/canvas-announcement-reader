@@ -59,6 +59,9 @@ func (api *API) getJSON(target interface{}, endpoint string,
 	defer resp.Body.Close() // nolint: errcheck gosec
 
 	if resp.StatusCode != http.StatusOK {
+		if resp.StatusCode == http.StatusUnauthorized {
+			return errors.New("bad access token")
+		}
 		return errors.New("received non-OK status from Canvas API")
 	}
 
@@ -92,6 +95,9 @@ func (api *API) put(endpoint string, payload []byte) error {
 	if resp.StatusCode != http.StatusNoContent &&
 		resp.StatusCode != http.StatusOK {
 
+		if resp.StatusCode == http.StatusUnauthorized {
+			return errors.New("bad access token")
+		}
 		return errors.New("received non-OK status from Canvas API")
 	}
 	return nil
