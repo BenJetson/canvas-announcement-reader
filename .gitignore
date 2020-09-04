@@ -5,6 +5,11 @@
 *.so
 *.dylib
 
+# Distribution Artifacts
+reader-darwin-amd64
+reader-windows-amd64.exe
+reader-linux-amd64
+
 # Test binary, built with `go test -c`
 *.test
 
